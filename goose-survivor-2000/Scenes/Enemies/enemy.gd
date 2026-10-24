@@ -4,6 +4,8 @@ extends CharacterBody2D
 # 1.sprite
 # Sprite, animation, enemy_data
 
+var food_scene = preload("res://Scenes/Food/food.tscn")
+
 var TOUCHING_PLAYER = false
 var attack_delay = 0.2
 
@@ -47,9 +49,17 @@ func receive_damage(damage):
 		die()
 
 func drop_loot():
-	pass
+	var corner1 = $"DropRange/1".global_position
+	var corner2 = $"DropRange/2".global_position
+	
+	for x in range (1,3):
+		var food = food_scene.instantiate()
+		food.position.x = randi_range(corner1.x, corner2.x)
+		food.position.y = randi_range(corner1.y, corner2.y)
+		get_parent().get_parent().find_child("FoodStore").add_child(food)
 
 func die():
+	drop_loot()
 	get_tree().queue_delete(self)
 
 

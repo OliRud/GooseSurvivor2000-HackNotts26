@@ -87,5 +87,13 @@ shape = SubResource("CircleShape2D_hbkl5")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ih5w7")
 
+[node name="DropRange" type="Node2D" parent="."]
+
+[node name="1" type="Marker2D" parent="DropRange"]
+position = Vector2(-4, -4)
+
+[node name="2" type="Marker2D" parent="DropRange"]
+position = Vector2(4, 4)
+
 [connection signal="body_entered" from="GiveDamageArea" to="." method="_on_give_damage_area_body_entered"]
 [connection signal="body_exited" from="GiveDamageArea" to="." method="_on_give_damage_area_body_exited"]
