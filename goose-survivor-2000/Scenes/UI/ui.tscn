@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://c43stylbtnb7w"]
+[gd_scene load_steps=2 format=3 uid="uid://c43stylbtnb7w"]
+
+[ext_resource type="Texture2D" uid="uid://vhlrqbteherq" path="res://Assets/SPRITES/y2kframe.png" id="1_dug76"]
 
 [node name="UI" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -149.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_dug76")
+expand_mode = 1
+
+[node name="Health" type="TextureProgressBar" parent="."]
+offset_left = 704.0
+offset_top = 600.0
+offset_right = 1128.0
+offset_bottom = 632.0
+value = 100.0
+
+[node name="XP" type="TextureProgressBar" parent="."]
+offset_left = 14.0
+offset_top = 598.0
+offset_right = 477.0
+offset_bottom = 638.0
+value = 100.0

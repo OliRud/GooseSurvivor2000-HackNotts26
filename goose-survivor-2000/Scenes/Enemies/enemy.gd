@@ -4,9 +4,12 @@ extends CharacterBody2D
 # 1.sprite
 # Sprite, animation, enemy_data
 
-var health = 0
+var TOUCHING_PLAYER = false
+var attack_delay = 0.2
+
+var health = 1
 @export var speed = 20
-var damage = 0
+var damage = 1
 
 var player
 
@@ -22,7 +25,6 @@ func instantiate(sprite,animation,enemy_data):
 
 func _physics_process(delta: float) -> void:
 	player = get_tree().get_first_node_in_group("player")
-	print(player.global_position)
 	
 	if player:
 		var direction: Vector2 = global_position.direction_to(player.global_position)
@@ -37,3 +39,16 @@ func receive_damage():
 
 func die():
 	pass
+
+
+func _on_give_damage_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		TOUCHING_PLAYER = true
+		while TOUCHING_PLAYER:
+			await get_tree().create_timer(attack_delay).timeout
+			body.receive_damage(damage)
+
+
+func _on_give_damage_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		TOUCHING_PLAYER = false
