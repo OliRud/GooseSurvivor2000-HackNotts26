@@ -66,6 +66,16 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="Timer" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 32.0
+offset_right = 20.0
+offset_bottom = 55.0
+grow_horizontal = 2
+
 [connection signal="send" from="UpgradesContainer/UpgradeBox" to="." method="receive_upgrade"]
 [connection signal="send" from="UpgradesContainer/UpgradeBox2" to="." method="receive_upgrade"]
 [connection signal="send" from="UpgradesContainer/UpgradeBox3" to="." method="receive_upgrade"]

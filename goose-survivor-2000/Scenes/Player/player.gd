@@ -7,6 +7,8 @@ const JUMP_VELOCITY = -400.0
 var immunity = false
 var immunity_timer = 0.6
 
+var fire_nokia_cooldown = false
+
 @onready var default_weapon = $Slash
 @onready var nokia_launcher = $NokiaLauncher
 
@@ -15,7 +17,7 @@ var STATS = {
 	"XP" : 0,
 	"XP_CAP" : 100,
 	"HEALTH_CAP" : 100,
-	"NOKIA_SKILL" : 3, #/5
+	"NOKIA_SKILL" : 5, #/5
 	"PRETZEL_SKILL" : 0,
 	"SHRINK_SKILL" : 0,
 	"SPEED_SKILL" : 0,
@@ -36,19 +38,22 @@ func _physics_process(delta: float) -> void:
 	var move_input = Input.get_vector("left", "right", "up", "down")
 	if !Data.PAUSE:
 		velocity = move_input * SPEED
+		move_and_slide()
 	if velocity:
 		$AnimationPlayer.play("Walk")
 	else:
 		$AnimationPlayer.play("RESET")
-	if !Data.PAUSE:
-		move_and_slide()
 	
 	
 	#Click
 	if Input.is_action_just_pressed("click") and !Data.PAUSE:
-		#adjust rotation
+		#slash
 		slash()
-		fire_nokia()
+		#nokia
+		if !fire_nokia_cooldown:
+			fire_nokia()
+			fire_nokia_cooldown = true
+			$Timers/NokiaTImer.start()
 		print("*Click*")
 	
 	
@@ -73,7 +78,6 @@ func level_check():
 func receive_damage(damage):
 	if immunity == false:
 		STATS["HEALTH"] -= damage
-		print(STATS["HEALTH"])
 		$AnimationPlayer.play("Damage")
 		
 		death_check()
@@ -98,3 +102,6 @@ func _on_immunity_timeout() -> void:
 
 func _on_attack_t_imer_timeout() -> void:
 	pass # Replace with function body.
+
+func _on_nokia_t_imer_timeout() -> void:
+	fire_nokia_cooldown = false

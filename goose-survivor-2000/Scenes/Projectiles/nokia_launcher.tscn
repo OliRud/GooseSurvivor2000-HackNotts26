@@ -8,30 +8,31 @@ script = ExtResource("1_nspi5")
 [node name="Spawn" type="Node2D" parent="."]
 
 [node name="1" type="Marker2D" parent="Spawn"]
-position = Vector2(16, 0)
 
 [node name="2" type="Marker2D" parent="Spawn"]
-position = Vector2(16, 0)
 
 [node name="3" type="Marker2D" parent="Spawn"]
-position = Vector2(16, 0)
 
 [node name="4" type="Marker2D" parent="Spawn"]
-position = Vector2(16, 0)
 
 [node name="5" type="Marker2D" parent="Spawn"]
-position = Vector2(16, 0)
 
 [node name="Vectors" type="Node2D" parent="."]
 
 [node name="1" type="Marker2D" parent="Vectors"]
-position = Vector2(163, 0)
+position = Vector2(160, 0)
 
 [node name="2" type="Marker2D" parent="Vectors"]
-position = Vector2(163, -12)
+position = Vector2(160, -32)
+
+[node name="4" type="Marker2D" parent="Vectors"]
+position = Vector2(160, 64)
+
+[node name="5" type="Marker2D" parent="Vectors"]
+position = Vector2(160, -56)
 
 [node name="3" type="Marker2D" parent="Vectors"]
-position = Vector2(163, 13)
+position = Vector2(160, 32)
 
 [node name="RayCast2D" type="RayCast2D" parent="Vectors"]
 target_position = Vector2(216, -16)

@@ -1,7 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://5dfikn4201yg"]
+[gd_scene load_steps=6 format=3 uid="uid://5dfikn4201yg"]
 
 [ext_resource type="Script" path="res://Scenes/Projectiles/projectile.gd" id="1_5yo8x"]
-[ext_resource type="Texture2D" uid="uid://dkpl66tchnqo6" path="res://icon.svg" id="1_6wwao"]
+[ext_resource type="Texture2D" uid="uid://cmjojlrj6bidj" path="res://Assets/SPRITES/Powers/NokiaPower.png" id="2_0quvh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op2wx"]
+atlas = ExtResource("2_0quvh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wc7t4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op2wx")
+}],
+"loop": true,
+"name": &"Nokia",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_irl0x"]
 radius = 4.0
@@ -9,10 +24,11 @@ radius = 4.0
 [node name="Projectile" type="Area2D"]
 script = ExtResource("1_5yo8x")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.90735e-06, -1.90735e-06)
-scale = Vector2(0.0507813, 0.0566406)
-texture = ExtResource("1_6wwao")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.19209e-07, -1.19209e-07)
+scale = Vector2(0.34375, 0.382813)
+sprite_frames = SubResource("SpriteFrames_wc7t4")
+animation = &"Nokia"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_irl0x")
@@ -20,4 +36,5 @@ shape = SubResource("CircleShape2D_irl0x")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

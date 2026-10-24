@@ -8,7 +8,7 @@ func _ready() -> void:
 	main = get_tree().current_scene
 
 func _process(delta: float) -> void:
-	print($"Vectors/1".global_position)
+	pass
 
 func fire(level):
 	if level:
@@ -16,5 +16,5 @@ func fire(level):
 			print("FIRE")
 			var proj = projectile_scene.instantiate()
 			proj.position = $Spawn.find_child(str(shot)).global_position
-			proj.align_and_fire($Vectors.find_child(str(shot)).global_position - $Spawn.find_child(str(shot)).global_position)
+			proj.align_and_fire($Vectors.find_child(str(shot)).global_position - $Spawn.find_child(str(shot)).global_position,"enemy",level)
 			main.find_child("Projectiles").add_child(proj)

@@ -14,49 +14,16 @@ metadata/_edit_lock_ = true
 zoom = Vector2(3, 3)
 
 [node name="Spawn" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(-105, -58)
+position = Vector2(11, -127)
 
 [node name="Spawn2" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(65, -39)
+position = Vector2(295, 11)
 
 [node name="Spawn3" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(-59, 45)
+position = Vector2(-2, 139)
 
 [node name="Spawn4" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(-327, 6)
-
-[node name="Spawn5" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(-157, 25)
-
-[node name="Spawn6" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(-281, 109)
-
-[node name="Spawn7" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(-58, -187)
-
-[node name="Spawn8" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(112, -168)
-
-[node name="Spawn9" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(-12, -84)
-
-[node name="Spawn10" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(206, -54)
-
-[node name="Spawn11" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(376, -35)
-
-[node name="Spawn12" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(252, 49)
-
-[node name="Spawn13" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(-123, 162)
-
-[node name="Spawn14" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(47, 181)
-
-[node name="Spawn15" parent="." instance=ExtResource("3_f8d5l")]
-position = Vector2(-77, 265)
+position = Vector2(-252, -2)
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -68,14 +35,3 @@ position = Vector2(-77, 265)
 [connection signal="spawn_enemy" from="Spawn2" to="." method="_on_spawn_spawn_enemy"]
 [connection signal="spawn_enemy" from="Spawn3" to="." method="_on_spawn_spawn_enemy"]
 [connection signal="spawn_enemy" from="Spawn4" to="." method="_on_spawn_spawn_enemy"]
-[connection signal="spawn_enemy" from="Spawn5" to="." method="_on_spawn_spawn_enemy"]
-[connection signal="spawn_enemy" from="Spawn6" to="." method="_on_spawn_spawn_enemy"]
-[connection signal="spawn_enemy" from="Spawn7" to="." method="_on_spawn_spawn_enemy"]
-[connection signal="spawn_enemy" from="Spawn8" to="." method="_on_spawn_spawn_enemy"]
-[connection signal="spawn_enemy" from="Spawn9" to="." method="_on_spawn_spawn_enemy"]
-[connection signal="spawn_enemy" from="Spawn10" to="." method="_on_spawn_spawn_enemy"]
-[connection signal="spawn_enemy" from="Spawn11" to="." method="_on_spawn_spawn_enemy"]
-[connection signal="spawn_enemy" from="Spawn12" to="." method="_on_spawn_spawn_enemy"]
-[connection signal="spawn_enemy" from="Spawn13" to="." method="_on_spawn_spawn_enemy"]
-[connection signal="spawn_enemy" from="Spawn14" to="." method="_on_spawn_spawn_enemy"]
-[connection signal="spawn_enemy" from="Spawn15" to="." method="_on_spawn_spawn_enemy"]

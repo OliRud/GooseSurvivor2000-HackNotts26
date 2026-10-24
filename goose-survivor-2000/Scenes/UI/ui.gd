@@ -27,6 +27,7 @@ func _process(delta: float) -> void:
 	$XP.value = parent.STATS["XP"]
 	$Health.max_value = parent.STATS["HEALTH_CAP"]
 	$Health.value = parent.STATS["HEALTH"]
+	$Timer.text = str(Data.TIMER)
 
 func refresh_upgrades():
 	$Panel.show()

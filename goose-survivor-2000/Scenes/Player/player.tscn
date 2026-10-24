@@ -108,6 +108,7 @@ script = ExtResource("1_jxvpk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_7oxcd")
+region_rect = Rect2(0, 0, 256, 480)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1s3cr")
@@ -126,6 +127,10 @@ one_shot = true
 [node name="Immunity" type="Timer" parent="Timers"]
 wait_time = 0.6
 
+[node name="NokiaTImer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
 [node name="Slash" parent="." instance=ExtResource("3_t04cx")]
 scale = Vector2(0.6, 0.6)
 
@@ -135,3 +140,4 @@ scale = Vector2(0.6, 0.6)
 
 [connection signal="timeout" from="Timers/AttackTImer" to="." method="_on_attack_t_imer_timeout"]
 [connection signal="timeout" from="Timers/Immunity" to="." method="_on_immunity_timeout"]
+[connection signal="timeout" from="Timers/NokiaTImer" to="." method="_on_nokia_t_imer_timeout"]

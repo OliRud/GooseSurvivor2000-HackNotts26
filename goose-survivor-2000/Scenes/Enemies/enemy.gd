@@ -17,7 +17,9 @@ var player
 
 var enemy_data = {
 	"EVIL_GOOSE" : {"health" : 5, "speed" : 18, "damage" : 5},
-	"ENEMY_2" : {"health" : 10, "speed" : 25, "damage" : 10}
+	"BIRD" : {"health" : 7, "speed" : 27, "damage" : 7},
+	"SHEEP" : {"health" : 20, "speed" : 13, "damage" : 15},
+	"MOUSE" : {"health" : 5, "speed" : 50, "damage" : 3}
 }
 
 func configure(sprite,animation,ref):
@@ -29,7 +31,6 @@ func configure(sprite,animation,ref):
 	health = enemy_data[ref]["health"]
 	speed = enemy_data[ref]["speed"]
 	damage = enemy_data[ref]["damage"]
-	print("config succesfull: ",health,damage,speed)
 
 func _physics_process(delta: float) -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -44,7 +45,6 @@ func give_damage():
 
 func receive_damage(damage):
 	health -= damage
-	print(health)
 	$AnimationPlayer.play("Damage")
 	if health <= 0:
 		die()
@@ -68,9 +68,9 @@ func _on_give_damage_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		TOUCHING_PLAYER = true
 		while TOUCHING_PLAYER:
-			if !Data.PAUSE:
-				await get_tree().create_timer(attack_delay).timeout
-				body.receive_damage(damage)
+			#if !Data.PAUSE: ## NOTE FIX THIS LATER
+			await get_tree().create_timer(attack_delay).timeout
+			body.receive_damage(damage)
 
 
 func _on_give_damage_area_body_exited(body: Node2D) -> void:
