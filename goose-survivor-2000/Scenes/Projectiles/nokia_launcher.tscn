@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://3dnlfedi2e17"]
+
+[ext_resource type="Script" path="res://Scenes/Projectiles/nokia_launcher.gd" id="1_nspi5"]
+
+[node name="NokiaLauncher" type="Node2D"]
+script = ExtResource("1_nspi5")
+
+[node name="Spawn" type="Node2D" parent="."]
+
+[node name="1" type="Marker2D" parent="Spawn"]
+position = Vector2(16, 0)
+
+[node name="2" type="Marker2D" parent="Spawn"]
+position = Vector2(16, 0)
+
+[node name="3" type="Marker2D" parent="Spawn"]
+position = Vector2(16, 0)
+
+[node name="4" type="Marker2D" parent="Spawn"]
+position = Vector2(16, 0)
+
+[node name="5" type="Marker2D" parent="Spawn"]
+position = Vector2(16, 0)
+
+[node name="Vectors" type="Node2D" parent="."]
+
+[node name="1" type="Marker2D" parent="Vectors"]
+position = Vector2(163, 0)
+
+[node name="2" type="Marker2D" parent="Vectors"]
+position = Vector2(163, -12)
+
+[node name="3" type="Marker2D" parent="Vectors"]
+position = Vector2(163, 13)
+
+[node name="RayCast2D" type="RayCast2D" parent="Vectors"]
+target_position = Vector2(216, -16)

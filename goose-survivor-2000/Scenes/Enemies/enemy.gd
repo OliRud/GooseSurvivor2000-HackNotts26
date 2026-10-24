@@ -21,7 +21,8 @@ var enemy_data = {
 }
 
 func configure(sprite,animation,ref):
-	
+	if animation:
+		$AnimationPlayer.play(animation)
 	for child in $Sprites.get_children():
 		child.hide()
 	$Sprites.find_child(sprite).visible = true
@@ -33,7 +34,7 @@ func configure(sprite,animation,ref):
 func _physics_process(delta: float) -> void:
 	player = get_tree().get_first_node_in_group("player")
 	
-	if player:
+	if player and !Data.PAUSE:
 		var direction: Vector2 = global_position.direction_to(player.global_position)
 		velocity = direction * speed
 		move_and_slide()
@@ -67,8 +68,9 @@ func _on_give_damage_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		TOUCHING_PLAYER = true
 		while TOUCHING_PLAYER:
-			await get_tree().create_timer(attack_delay).timeout
-			body.receive_damage(damage)
+			if !Data.PAUSE:
+				await get_tree().create_timer(attack_delay).timeout
+				body.receive_damage(damage)
 
 
 func _on_give_damage_area_body_exited(body: Node2D) -> void:

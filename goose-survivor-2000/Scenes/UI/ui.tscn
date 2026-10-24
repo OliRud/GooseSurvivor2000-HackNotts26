@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c43stylbtnb7w"]
+[gd_scene load_steps=4 format=3 uid="uid://c43stylbtnb7w"]
 
+[ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="1_ao6vv"]
 [ext_resource type="Texture2D" uid="uid://vhlrqbteherq" path="res://Assets/SPRITES/y2kframe.png" id="1_dug76"]
+[ext_resource type="PackedScene" uid="uid://wiuu14ijhdno" path="res://Scenes/UI/upgrade_box.tscn" id="3_08ea0"]
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_ao6vv")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 12
@@ -16,16 +19,53 @@ grow_vertical = 0
 texture = ExtResource("1_dug76")
 expand_mode = 1
 
-[node name="Health" type="TextureProgressBar" parent="."]
+[node name="Health" type="ProgressBar" parent="."]
 offset_left = 704.0
 offset_top = 600.0
 offset_right = 1128.0
 offset_bottom = 632.0
 value = 100.0
 
-[node name="XP" type="TextureProgressBar" parent="."]
-offset_left = 14.0
-offset_top = 598.0
-offset_right = 477.0
-offset_bottom = 638.0
-value = 100.0
+[node name="XP" type="ProgressBar" parent="."]
+offset_left = 16.0
+offset_top = 592.0
+offset_right = 479.0
+offset_bottom = 632.0
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = -112.0
+offset_top = -192.0
+offset_right = 1312.0
+offset_bottom = 584.0
+
+[node name="UpgradesContainer" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -260.0
+offset_right = 320.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="UpgradeBox" parent="UpgradesContainer" instance=ExtResource("3_08ea0")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UpgradeBox2" parent="UpgradesContainer" instance=ExtResource("3_08ea0")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UpgradeBox3" parent="UpgradesContainer" instance=ExtResource("3_08ea0")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="send" from="UpgradesContainer/UpgradeBox" to="." method="receive_upgrade"]
+[connection signal="send" from="UpgradesContainer/UpgradeBox2" to="." method="receive_upgrade"]
+[connection signal="send" from="UpgradesContainer/UpgradeBox3" to="." method="receive_upgrade"]

@@ -20,7 +20,7 @@ func _on_spawn_spawn_enemy(scene: Variant, g_position, enemy_type) -> void:
 	
 	match enemy_type:
 		"EVIL_GOOSE": #sprite, animation, stat sheet (0 animation mens null)
-			entity.configure("1","0","EVIL_GOOSE")
+			entity.configure("1","1","EVIL_GOOSE")
 		"ENEMY_2":
 			entity.configure("2","0","ENEMY_2")
 	

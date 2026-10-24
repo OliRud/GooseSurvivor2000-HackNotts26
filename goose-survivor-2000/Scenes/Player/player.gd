@@ -8,12 +8,14 @@ var immunity = false
 var immunity_timer = 0.6
 
 @onready var default_weapon = $Slash
+@onready var nokia_launcher = $NokiaLauncher
 
 var STATS = {
 	"HEALTH" : 100,
 	"XP" : 0,
 	"XP_CAP" : 100,
-	"NOKIA_SKILL" : 0, #/5
+	"HEALTH_CAP" : 100,
+	"NOKIA_SKILL" : 3, #/5
 	"PRETZEL_SKILL" : 0,
 	"SHRINK_SKILL" : 0,
 	"SPEED_SKILL" : 0,
@@ -28,21 +30,25 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
 	default_weapon.look_at(mouse_pos)
+	nokia_launcher.look_at(mouse_pos)
 
 	# MOVEMENT + Animation
 	var move_input = Input.get_vector("left", "right", "up", "down")
-	velocity = move_input * SPEED
+	if !Data.PAUSE:
+		velocity = move_input * SPEED
 	if velocity:
 		$AnimationPlayer.play("Walk")
 	else:
 		$AnimationPlayer.play("RESET")
-	move_and_slide()
+	if !Data.PAUSE:
+		move_and_slide()
 	
 	
 	#Click
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("click") and !Data.PAUSE:
 		#adjust rotation
 		slash()
+		fire_nokia()
 		print("*Click*")
 	
 	
@@ -57,7 +63,11 @@ func acquire_food(xp):
 	level_check()
 
 func level_check():
-	pass
+	if STATS["XP"] >= STATS["XP_CAP"]:
+		Data.PAUSE = true
+		STATS["XP"] = 0
+		STATS["XP_CAP"] *= 1.25
+		$UI.refresh_upgrades()
 
 # DAMAGE RECEIVE
 func receive_damage(damage):
@@ -78,6 +88,9 @@ func death_check():
 # ATTACK FUNCTIONS
 func slash():
 	default_weapon.slash(STATS["HONK_SKILL"])
+
+func fire_nokia():
+	nokia_launcher.fire(STATS["NOKIA_SKILL"])
 
 # TIMERS
 func _on_immunity_timeout() -> void:

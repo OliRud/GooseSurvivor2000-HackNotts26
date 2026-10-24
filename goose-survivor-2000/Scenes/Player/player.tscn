@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2kcoskjoabey"]
+[gd_scene load_steps=11 format=3 uid="uid://c2kcoskjoabey"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_jxvpk"]
 [ext_resource type="Texture2D" uid="uid://vymjay1qapxr" path="res://Assets/SPRITES/Goose.png" id="2_7oxcd"]
 [ext_resource type="PackedScene" uid="uid://ctvdlubyp6i55" path="res://Scenes/Projectiles/slash.tscn" id="3_t04cx"]
+[ext_resource type="PackedScene" uid="uid://c43stylbtnb7w" path="res://Scenes/UI/ui.tscn" id="4_j6cxd"]
+[ext_resource type="PackedScene" uid="uid://3dnlfedi2e17" path="res://Scenes/Projectiles/nokia_launcher.tscn" id="5_emddf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1s3cr"]
-radius = 3.0
-height = 14.0
+radius = 5.0
+height = 16.0
 
 [sub_resource type="Animation" id="Animation_xf5fm"]
 resource_name = "Damage"
@@ -126,6 +128,10 @@ wait_time = 0.6
 
 [node name="Slash" parent="." instance=ExtResource("3_t04cx")]
 scale = Vector2(0.6, 0.6)
+
+[node name="UI" parent="." instance=ExtResource("4_j6cxd")]
+
+[node name="NokiaLauncher" parent="." instance=ExtResource("5_emddf")]
 
 [connection signal="timeout" from="Timers/AttackTImer" to="." method="_on_attack_t_imer_timeout"]
 [connection signal="timeout" from="Timers/Immunity" to="." method="_on_immunity_timeout"]
