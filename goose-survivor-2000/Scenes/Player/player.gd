@@ -27,6 +27,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
+	default_weapon.look_at(mouse_pos)
 
 	# MOVEMENT + Animation
 	var move_input = Input.get_vector("left", "right", "up", "down")
@@ -41,7 +42,6 @@ func _physics_process(delta: float) -> void:
 	#Click
 	if Input.is_action_just_pressed("click"):
 		#adjust rotation
-		default_weapon.look_at(mouse_pos)
 		slash()
 		print("*Click*")
 	
@@ -77,7 +77,7 @@ func death_check():
 
 # ATTACK FUNCTIONS
 func slash():
-	default_weapon.slash()
+	default_weapon.slash(STATS["HONK_SKILL"])
 
 # TIMERS
 func _on_immunity_timeout() -> void:
