@@ -34,8 +34,9 @@ func _physics_process(delta: float) -> void:
 func give_damage():
 	pass
 
-func receive_damage():
-	pass
+func receive_damage(damage):
+	print("enemy hit")
+	$AnimationPlayer.play("Damage")
 
 func die():
 	pass

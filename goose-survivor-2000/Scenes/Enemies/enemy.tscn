@@ -1,7 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://c432fffrnaojd"]
+[gd_scene load_steps=9 format=3 uid="uid://c432fffrnaojd"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="1_ol1k2"]
 [ext_resource type="Texture2D" uid="uid://blj7clju673ek" path="res://Assets/SPRITES/Enemies/EvilGoose.png" id="2_xg7tp"]
+
+[sub_resource type="Animation" id="Animation_475jg"]
+resource_name = "Damage"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lnaf0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t1wjv"]
+_data = {
+"Damage": SubResource("Animation_475jg"),
+"RESET": SubResource("Animation_lnaf0")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_erlnt"]
 radius = 2.0
@@ -10,7 +48,10 @@ height = 12.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_hbkl5"]
 radius = 7.07107
 
-[node name="Enemy" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ih5w7"]
+radius = 2.0
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_ol1k2")
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -19,6 +60,9 @@ script = ExtResource("1_ol1k2")
 texture = ExtResource("2_xg7tp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t1wjv")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_erlnt")
@@ -33,6 +77,9 @@ shape = SubResource("CircleShape2D_hbkl5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelfDamageArea"]
 shape = SubResource("CircleShape2D_hbkl5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ih5w7")
 
 [connection signal="body_entered" from="GiveDamageArea" to="." method="_on_give_damage_area_body_entered"]
 [connection signal="body_exited" from="GiveDamageArea" to="." method="_on_give_damage_area_body_exited"]
