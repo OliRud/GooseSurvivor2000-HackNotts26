@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://sebi74f43ck0"
+path="res://.godot/imported/(Menu Theme) Geese - Sound Effect ProSounds.mp3-7e3a4d4287c75ac04334ff13f8eebf95.mp3str"
+
+[deps]
+
+source_file="res://Assets/AUDIO/(Menu Theme) Geese - Sound Effect ProSounds.mp3"
+dest_files=["res://.godot/imported/(Menu Theme) Geese - Sound Effect ProSounds.mp3-7e3a4d4287c75ac04334ff13f8eebf95.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -4,6 +4,7 @@ var speed = 0.5
 var direction = Vector2.ZERO
 var damage_group
 var damage
+@export var destroy = true 
 
 func align_and_fire(dir,group,level):
 	direction = dir
@@ -19,8 +20,8 @@ func _physics_process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	queue_free()
 
-
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group(damage_group):
+	if body.is_in_group("enemy"):
 		body.receive_damage(damage)
-		queue_free()
+		if destroy:
+			queue_free()

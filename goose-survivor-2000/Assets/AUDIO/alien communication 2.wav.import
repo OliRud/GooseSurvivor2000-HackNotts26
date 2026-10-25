@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://oxhaxwckrcys"
+path="res://.godot/imported/alien communication 2.wav-ded75e2ed4209840d94339134352ee94.sample"
+
+[deps]
+
+source_file="res://Assets/AUDIO/alien communication 2.wav"
+dest_files=["res://.godot/imported/alien communication 2.wav-ded75e2ed4209840d94339134352ee94.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

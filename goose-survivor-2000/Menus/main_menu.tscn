@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=3 uid="uid://djrwhtk4fb057"]
+
+[ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_1x57j"]
+[ext_resource type="Texture2D" uid="uid://bnfd0x2h62k6t" path="res://Assets/TITLE.png" id="1_dhlga"]
+[ext_resource type="FontFile" uid="uid://dacu24pvmqqwn" path="res://Assets/PixelifySans-VariableFont_wght.ttf" id="3_78mnh"]
+
+[sub_resource type="FontFile" id="FontFile_4g3sy"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16bhv"]
+bg_color = Color(0.741385, 0.741385, 0.741384, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.823529)
+shadow_size = 7
+
+[sub_resource type="Theme" id="Theme_bpwl8"]
+Button/fonts/font = SubResource("FontFile_4g3sy")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_16bhv")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_16bhv")
+Button/styles/normal = SubResource("StyleBoxFlat_16bhv")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1x57j")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_dhlga")
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -571.0
+offset_top = -234.0
+offset_right = -191.0
+offset_bottom = -114.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_bpwl8")
+theme_override_colors/font_color = Color(0.41598, 0.41598, 0.41598, 1)
+theme_override_fonts/font = ExtResource("3_78mnh")
+theme_override_font_sizes/font_size = 50
+text = "PLAY"
+
+[node name="credits" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -472.0
+offset_top = -80.0
+offset_right = -284.0
+offset_bottom = -18.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_bpwl8")
+theme_override_colors/font_color = Color(0.41598, 0.41598, 0.41598, 1)
+theme_override_fonts/font = ExtResource("3_78mnh")
+theme_override_font_sizes/font_size = 50
+text = "CREDITS"
+
+[node name="Window" type="Window" parent="."]
+initial_position = 1
+size = Vector2i(500, 150)
+
+[node name="Label" type="Label" parent="Window"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Korng Sok - Title screen background photo - https://unsplash.com/photos/a-large-building-with-a-dome-on-top-of-it-pt0b_AHz0xM
+BDragon1727 -> slash animations
+Kacper Wozniak - https://thkaspar.itch.io/tth-animals
+ElvGames - Spritesheet"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]

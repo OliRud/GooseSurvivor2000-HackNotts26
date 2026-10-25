@@ -234,12 +234,13 @@ radius = 7.07107
 radius = 2.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_mask = 3
 script = ExtResource("1_ol1k2")
 
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="1" type="Sprite2D" parent="Sprites"]
-self_modulate = Color(1, 0.290196, 0.290196, 1)
+self_modulate = Color(0.691357, 0.691357, 0.691357, 1)
 texture = ExtResource("2_xg7tp")
 
 [node name="2" type="AnimatedSprite2D" parent="Sprites"]
@@ -270,11 +271,13 @@ shape = SubResource("CapsuleShape2D_erlnt")
 disabled = true
 
 [node name="GiveDamageArea" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GiveDamageArea"]
 shape = SubResource("CircleShape2D_hbkl5")
 
 [node name="SelfDamageArea" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelfDamageArea"]
 shape = SubResource("CircleShape2D_hbkl5")

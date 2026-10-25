@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://brjx3abfmqiyq"]
+
+[ext_resource type="Script" path="res://Menus/game_over.gd" id="1_khtsp"]
+[ext_resource type="Texture2D" uid="uid://clt36s726c506" path="res://Assets/SPRITES/misc/Screenshot 2026-10-25 050757.png" id="2_4kpet"]
+[ext_resource type="FontFile" uid="uid://dacu24pvmqqwn" path="res://Assets/PixelifySans-VariableFont_wght.ttf" id="3_cht33"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_khtsp")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(0, 1, 1, 1)
+offset_left = -70.0
+offset_top = -15.0
+offset_right = 1267.0
+offset_bottom = 695.0
+texture = ExtResource("2_4kpet")
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -712.0
+offset_top = -200.0
+offset_right = -392.0
+offset_bottom = -73.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_cht33")
+theme_override_font_sizes/font_size = 50
+text = "Play Again"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 112.0
+offset_right = 1016.0
+offset_bottom = 461.0
+theme_override_fonts/font = ExtResource("3_cht33")
+theme_override_font_sizes/font_size = 70
+text = "YOU WIN!! THE CARNIVAL IS DESTROYED "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]

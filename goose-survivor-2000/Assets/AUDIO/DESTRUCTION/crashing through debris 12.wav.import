@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ex3v6qp4onvr"
+path="res://.godot/imported/crashing through debris 12.wav-8b502465618a795762876391f71332dd.sample"
+
+[deps]
+
+source_file="res://Assets/AUDIO/DESTRUCTION/crashing through debris 12.wav"
+dest_files=["res://.godot/imported/crashing through debris 12.wav-8b502465618a795762876391f71332dd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

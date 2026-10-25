@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1fqevhqlrb4m"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/boss.gd" id="1_ajreu"]
+[ext_resource type="Texture2D" uid="uid://blj7clju673ek" path="res://Assets/SPRITES/Enemies/EvilGoose.png" id="2_0mtgh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_827vx"]
+radius = 8.0
+height = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xkv1d"]
+radius = 16.0
+
+[node name="Boss" type="CharacterBody2D" groups=["enemy"]]
+collision_mask = 3
+script = ExtResource("1_ajreu")
+
+[node name="1" type="Sprite2D" parent="."]
+modulate = Color(1, 0.273989, 0.21327, 1)
+self_modulate = Color(0.691357, 0.691357, 0.691357, 1)
+scale = Vector2(3, 3)
+texture = ExtResource("2_0mtgh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_827vx")
+
+[node name="GiveDamageArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GiveDamageArea"]
+shape = SubResource("CircleShape2D_xkv1d")
+
+[node name="SelfDamageArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelfDamageArea"]
+shape = SubResource("CircleShape2D_xkv1d")
+
+[connection signal="body_entered" from="GiveDamageArea" to="." method="_on_give_damage_area_body_entered"]
+[connection signal="body_exited" from="GiveDamageArea" to="." method="_on_give_damage_area_body_exited"]

@@ -5,13 +5,12 @@ extends CanvasLayer
 
 # UPGRADE : Description
 const BUCKET = {
-	1 : ["HEALTH_CAP","Increase your health cap"],
-	2 : ["NOKIA_SKILL","Throw bricks"],
-	3 : ["PRETZEL_SKILL","mmmmmmm"],
-	4 : ["SHRINK_SKILL","Shrink your hitbox"],
-	5 : ["SPEED_SKILL","Walk Faster"],
-	6 : ["HONK_SKILL","Increase size of default attack"],
-	7 : ["DISK_SKILL","placeholder"]
+	1 : ["HEALTH_CAP","Boost Health"],
+	2 : ["NOKIA_SKILL","Throw Nokias"],
+	3 : ["PRETZEL_SKILL","spinning pretzels"],
+	4 : ["SPEED_SKILL","Movement Speed"],
+	5 : ["HONK_SKILL","Honk Attack"],
+	6 : ["DISK_SKILL","Sharp Disks"]
 }
 
 
@@ -33,11 +32,16 @@ func refresh_upgrades():
 	$Panel.show()
 	$UpgradesContainer.show()
 	for x in $UpgradesContainer.get_children():
-		var selected_upgrade = randi_range(1,7)
+		var selected_upgrade = randi_range(1,6)
 		x.update_contents(BUCKET[selected_upgrade][0],BUCKET[selected_upgrade][1])
 
 func receive_upgrade(upgrade): #response from whichever upgrade was picked
 	parent.STATS[upgrade] += 1
+	if upgrade == "HEALTH_CAP":
+		parent.STATS["HEALTH_CAP"] += 25
+		parent.STATS["HEALTH"] = parent.STATS["HEALTH_CAP"]
+	elif upgrade == "SPEED_SKILL":
+		parent.SPEED += 3
 	Data.PAUSE = false
 	$Panel.hide()
 	$UpgradesContainer.hide()

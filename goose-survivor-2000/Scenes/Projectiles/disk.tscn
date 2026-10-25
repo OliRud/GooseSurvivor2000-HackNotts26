@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://rqoh5m0jhfmb"]
+
+[ext_resource type="Script" path="res://Scenes/Projectiles/projectile.gd" id="1_2g80i"]
+[ext_resource type="Texture2D" uid="uid://ijy0ot8dw31t" path="res://Assets/SPRITES/Powers/DiskPower.png" id="1_ceuy2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_knc74"]
+radius = 4.0
+
+[node name="Disk" type="Area2D"]
+script = ExtResource("1_2g80i")
+destroy = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_knc74")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(0.40625, 0.4375)
+texture = ExtResource("1_ceuy2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

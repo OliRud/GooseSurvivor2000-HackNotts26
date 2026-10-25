@@ -45,7 +45,9 @@ func give_damage():
 
 func receive_damage(damage):
 	health -= damage
-	$AnimationPlayer.play("Damage")
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color.RED, 0.1)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
 	if health <= 0:
 		die()
 

@@ -1,10 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://wiuu14ijhdno"]
+[gd_scene load_steps=4 format=3 uid="uid://wiuu14ijhdno"]
 
 [ext_resource type="Script" path="res://Scenes/UI/upgrade_box.gd" id="1_k4l2q"]
+[ext_resource type="FontFile" uid="uid://dacu24pvmqqwn" path="res://Assets/PixelifySans-VariableFont_wght.ttf" id="2_47r1h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgbxt"]
+bg_color = Color(0.762404, 0.762404, 0.762403, 1)
+border_color = Color(0.783523, 0.783523, 0.783523, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="UpgradeBox" type="PanelContainer"]
 offset_right = 192.0
 offset_bottom = 328.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cgbxt")
 script = ExtResource("1_k4l2q")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -18,12 +28,14 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_47r1h")
 text = "xxxxx"
 horizontal_alignment = 1
 
 [node name="Select" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_47r1h")
 text = "UPGRADE"
 
 [connection signal="pressed" from="VBoxContainer/Select" to="." method="_on_select_pressed"]

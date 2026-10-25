@@ -9,6 +9,7 @@
 radius = 5.09902
 
 [node name="Food" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_djio1")
 
 [node name="Sprites" type="Node2D" parent="."]

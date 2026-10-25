@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxkel33km2q1p"]
+
+[ext_resource type="Script" path="res://Scenes/Projectiles/pretsel_spin.gd" id="1_7vnco"]
+[ext_resource type="PackedScene" uid="uid://dqqijpaktj87p" path="res://Scenes/Projectiles/pretsel.tscn" id="2_1ihmj"]
+
+[node name="PretselSpin" type="Node2D"]
+script = ExtResource("1_7vnco")
+
+[node name="1" parent="." instance=ExtResource("2_1ihmj")]
+position = Vector2(0, -24)
+
+[node name="2" parent="." instance=ExtResource("2_1ihmj")]
+position = Vector2(0, 24)
+
+[node name="3" parent="." instance=ExtResource("2_1ihmj")]
+position = Vector2(24, 0)
+
+[node name="4" parent="." instance=ExtResource("2_1ihmj")]
+position = Vector2(-24, 0)

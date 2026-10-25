@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2kcoskjoabey"]
+[gd_scene load_steps=14 format=3 uid="uid://c2kcoskjoabey"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_jxvpk"]
 [ext_resource type="Texture2D" uid="uid://vymjay1qapxr" path="res://Assets/SPRITES/Goose.png" id="2_7oxcd"]
 [ext_resource type="PackedScene" uid="uid://ctvdlubyp6i55" path="res://Scenes/Projectiles/slash.tscn" id="3_t04cx"]
 [ext_resource type="PackedScene" uid="uid://c43stylbtnb7w" path="res://Scenes/UI/ui.tscn" id="4_j6cxd"]
 [ext_resource type="PackedScene" uid="uid://3dnlfedi2e17" path="res://Scenes/Projectiles/nokia_launcher.tscn" id="5_emddf"]
+[ext_resource type="PackedScene" uid="uid://dxkel33km2q1p" path="res://Scenes/Projectiles/pretsel_spin.tscn" id="6_d7m3t"]
+[ext_resource type="Texture2D" uid="uid://bsr34telsvsef" path="res://Assets/SPRITES/misc/Flashlight.png" id="7_sp4bx"]
+[ext_resource type="PackedScene" uid="uid://btyp6rh7qqf7o" path="res://Scenes/Projectiles/disk_container.tscn" id="8_td3v6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1s3cr"]
 radius = 5.0
@@ -104,6 +107,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_jxvpk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -131,6 +136,10 @@ wait_time = 0.6
 wait_time = 2.0
 one_shot = true
 
+[node name="DiskTimer" type="Timer" parent="Timers"]
+wait_time = 5.0
+autostart = true
+
 [node name="Slash" parent="." instance=ExtResource("3_t04cx")]
 scale = Vector2(0.6, 0.6)
 
@@ -138,6 +147,17 @@ scale = Vector2(0.6, 0.6)
 
 [node name="NokiaLauncher" parent="." instance=ExtResource("5_emddf")]
 
+[node name="PretselSpin" parent="." instance=ExtResource("6_d7m3t")]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+enabled = false
+energy = 0.2
+texture = ExtResource("7_sp4bx")
+
+[node name="DiskContainer" parent="." instance=ExtResource("8_td3v6")]
+
 [connection signal="timeout" from="Timers/AttackTImer" to="." method="_on_attack_t_imer_timeout"]
 [connection signal="timeout" from="Timers/Immunity" to="." method="_on_immunity_timeout"]
 [connection signal="timeout" from="Timers/NokiaTImer" to="." method="_on_nokia_t_imer_timeout"]
+[connection signal="timeout" from="Timers/DiskTimer" to="." method="_on_disk_timer_timeout"]
