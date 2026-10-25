@@ -9,5 +9,6 @@ func roundplay() -> void:
 	await get_tree().create_timer(4).timeout
 	while TIMER != 0:
 		await get_tree().create_timer(1).timeout
-		TIMER -= 1
+		if !PAUSE:
+			TIMER -= 1
 	ONGOING = false
